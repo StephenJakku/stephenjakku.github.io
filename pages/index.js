@@ -14,16 +14,16 @@ export default function Home() {
   const conRef = useRef(null);
   const executeScroll = () => {
     if (comp == "exp") {
-      expRef.current.scrollIntoView();
+      expRef.current.scrollIntoView({ behavior: "smooth" });
       console.log("EXP");
     } else if (comp == "abt") {
-      abtRef.current.scrollIntoView();
+      abtRef.current.scrollIntoView({ behavior: "smooth" });
       console.log("ABT");
     } else if (comp == "prj") {
-      prjRef.current.scrollIntoView();
+      prjRef.current.scrollIntoView({ behavior: "smooth" });
       console.log("PRJ");
     } else if (comp == "con") {
-      conRef.current.scrollIntoView();
+      conRef.current.scrollIntoView({ behavior: "smooth" });
       console.log("CON");
     }
   };
