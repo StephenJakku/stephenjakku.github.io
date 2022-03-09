@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-full">
       <Head>
         <title>Stephen Jakku</title>
         <meta name="description" content="Portfolio website of Stephen Jakku" />
