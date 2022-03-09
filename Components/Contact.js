@@ -1,6 +1,6 @@
-function Contact() {
+function Contact({ bgColor }) {
   return (
-    <div className="flex justify-center h-full bg-zinc-800 items-center">
+    <div className={`flex justify-center h-full ${bgColor} items-center`}>
       <p className="text-white">Contact</p>
     </div>
   );

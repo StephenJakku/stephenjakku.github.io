@@ -1,7 +1,7 @@
-function Projects() {
+function Projects({ bgColor }) {
   return (
-    <div className="flex justify-center h-full bg-gray-400 items-center">
-      <p className="text-black">Projects</p>
+    <div className={`flex justify-center h-full ${bgColor} items-center`}>
+      <p className="text-white">Projects</p>
     </div>
   );
 }
