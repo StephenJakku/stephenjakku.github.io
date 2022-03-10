@@ -1,7 +1,7 @@
 import { Sling as Hamburger } from "hamburger-react";
 import { useState, useCallback, useEffect } from "react";
 
-function Navbar({ executeScroll, comp }) {
+function Navbar({ executeScroll, refs }) {
   const [isOpen, setOpen] = useState(false);
   return (
     <div className="grid grid-cols-2 h-12 bg-black">
@@ -17,8 +17,7 @@ function Navbar({ executeScroll, comp }) {
         <ul className="flex items-center text-white text-lg space-x-4 mr-4">
           <li
             onClick={() => {
-              comp("abt");
-              executeScroll();
+              executeScroll(refs.abtRef);
             }}
             className="hover:border-b-2 hover:border-red-600 p-1 cursor-default "
           >
@@ -26,8 +25,7 @@ function Navbar({ executeScroll, comp }) {
           </li>
           <li
             onClick={() => {
-              comp("exp");
-              executeScroll();
+              executeScroll(refs.expRef);
             }}
             className="hover:border-b-2 hover:border-cyan-400 p-1  cursor-default"
           >
@@ -35,8 +33,7 @@ function Navbar({ executeScroll, comp }) {
           </li>
           <li
             onClick={() => {
-              comp("prj");
-              executeScroll();
+              executeScroll(refs.prjRef);
             }}
             className="hover:border-b-2 hover:border-orange-400 p-1  cursor-default"
           >
@@ -44,8 +41,7 @@ function Navbar({ executeScroll, comp }) {
           </li>
           <li
             onClick={() => {
-              executeScroll();
-              comp("con");
+              executeScroll(refs.conRef);
             }}
             className="hover:border-b-2 hover:border-green-500 p-1  cursor-default"
           >

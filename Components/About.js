@@ -9,7 +9,7 @@ function About({ bgColor }) {
         <p className="max-w-xl">
           Currently a Computer Science graduate student at California State
           University - Long Beach. I am an experienced DevOps Engineer,
-          Middleware Developer who's Trying to explore the front end world!
+          Middleware Developer who's trying to explore the front end world!
         </p>
       </div>
     </div>

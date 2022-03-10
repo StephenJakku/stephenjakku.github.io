@@ -7,25 +7,15 @@ import Contact from "../Components/Contact";
 import { useRef, useState } from "react";
 
 export default function Home() {
-  const [comp, setcomp] = useState("");
   const expRef = useRef(null);
   const abtRef = useRef(null);
   const prjRef = useRef(null);
   const conRef = useRef(null);
-  const executeScroll = () => {
-    if (comp == "exp") {
-      expRef.current.scrollIntoView({ behavior: "smooth" });
-      console.log("EXP");
-    } else if (comp == "abt") {
-      abtRef.current.scrollIntoView({ behavior: "smooth" });
-      console.log("ABT");
-    } else if (comp == "prj") {
-      prjRef.current.scrollIntoView({ behavior: "smooth" });
-      console.log("PRJ");
-    } else if (comp == "con") {
-      conRef.current.scrollIntoView({ behavior: "smooth" });
-      console.log("CON");
-    }
+
+  const ref = { abtRef, expRef, prjRef, conRef };
+
+  const executeScroll = (componentRef) => {
+    componentRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -35,15 +25,18 @@ export default function Home() {
         <meta name="description" content="Portfolio website of Stephen Jakku" />
       </Head>
       <div className="fixed top-0 left-0 right-0">
-        <Navbar executeScroll={executeScroll} comp={setcomp} />
+        <Navbar executeScroll={executeScroll} refs={ref} />
       </div>
       <main className="h-full">
         <div ref={abtRef}></div>
         <About bgColor="bg-black" />
+
         <div ref={expRef}></div>
         <Experience bgColor="bg-gray-400" />
+
         <div ref={prjRef}></div>
         <Projects bgColor="bg-zinc-900" />
+
         <div ref={conRef}></div>
         <Contact bgColor="bg-black" />
       </main>
