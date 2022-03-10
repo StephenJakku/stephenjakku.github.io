@@ -6,7 +6,12 @@ function Navbar({ executeScroll, refs }) {
   return (
     <div className="grid grid-cols-2 h-12 bg-black">
       <div className="flex text-white justify -start items-center text-xl tracking-wide">
-        <h1 className="pl-4 hover:text-3xl cursor-default text-2xl font-medium">
+        <h1
+          className="pl-4 hover:text-3xl cursor-default text-2xl font-medium"
+          onClick={() => {
+            executeScroll(refs.intRef);
+          }}
+        >
           SJ
         </h1>
       </div>
