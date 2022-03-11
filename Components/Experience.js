@@ -1,6 +1,6 @@
-function Experience({ bgColor }) {
+function Experience({ bgColor, refer }) {
   return (
-    <div className={`flex justify-center h-full ${bgColor}`}>
+    <div className={`flex justify-center h-full ${bgColor}`} ref={refer}>
       <div className="space-y-4">
         <div>
           <p className="text-black pt-12 text-2xl font-medium">Experience</p>

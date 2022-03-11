@@ -22,11 +22,11 @@ function Navbar({ executeScroll, refs }) {
         <ul className="flex items-center text-white text-lg space-x-4 mr-4">
           <li
             onClick={() => {
-              executeScroll(refs.abtRef);
+              executeScroll(refs.sklRef);
             }}
             className="hover:border-b-2 hover:border-red-600 p-1 cursor-default "
           >
-            About
+            Skills
           </li>
           <li
             onClick={() => {

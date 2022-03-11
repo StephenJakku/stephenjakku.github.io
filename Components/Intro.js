@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-function Intro({ bgColor }) {
+function Intro({ bgColor, refer }) {
   return (
     <div
       className={`flex justify-center h-full ${bgColor} items-center text-white`}
+      ref={refer}
     >
       <div className="space-y-3">
         <p>Hey, I am</p>

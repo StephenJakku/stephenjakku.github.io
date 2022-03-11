@@ -4,17 +4,17 @@ import Intro from "../Components/Intro";
 import Experience from "../Components/Experience";
 import Projects from "../Components/Projects";
 import Contact from "../Components/Contact";
-import About from "../Components/About";
+import Skills from "../Components/Skills";
 import { useRef, useState } from "react";
 
 export default function Home() {
   const intRef = useRef(null);
   const expRef = useRef(null);
-  const abtRef = useRef(null);
+  const sklRef = useRef(null);
   const prjRef = useRef(null);
   const conRef = useRef(null);
 
-  const ref = { intRef, abtRef, expRef, prjRef, conRef };
+  const ref = { intRef, sklRef, expRef, prjRef, conRef };
 
   const executeScroll = (componentRef) => {
     componentRef.current.scrollIntoView({ behavior: "smooth" });
@@ -30,16 +30,11 @@ export default function Home() {
         <Navbar executeScroll={executeScroll} refs={ref} />
       </div>
       <main className="h-full">
-        <div ref={intRef}></div>
-        <Intro bgColor="bg-black" />
-        <div ref={abtRef}></div>
-        <About />
-        <div ref={expRef}></div>
-        <Experience bgColor="bg-gray-400" />
-        <div ref={prjRef}></div>
-        <Projects bgColor="bg-zinc-900" />
-        <div ref={conRef}></div>
-        <Contact bgColor="bg-black" />
+        <Intro refer={intRef} bgColor="bg-black" />
+        <Skills refer={sklRef} />
+        <Experience refer={expRef} bgColor="bg-gray-400" />
+        <Projects refer={prjRef} bgColor="bg-zinc-900" />
+        <Contact refer={conRef} bgColor="bg-black" />
       </main>
 
       <footer></footer>
