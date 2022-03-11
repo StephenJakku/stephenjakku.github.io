@@ -31,9 +31,9 @@ export default function Home() {
       </div>
       <main className="h-full">
         <Intro refer={intRef} bgColor="bg-black" />
-        <Skills refer={sklRef} />
-        <Experience refer={expRef} bgColor="bg-gray-400" />
-        <Projects refer={prjRef} bgColor="bg-zinc-900" />
+        <Skills refer={sklRef} bgColor="bg-black" />
+        <Experience refer={expRef} bgColor="bg-black" />
+        <Projects refer={prjRef} bgColor="bg-black" />
         <Contact refer={conRef} bgColor="bg-black" />
       </main>
 
