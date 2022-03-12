@@ -2,11 +2,13 @@
 function Skills({ bgColor, refer }) {
   return (
     <div
-      className={`flex-col justify-center h-full ${bgColor} items-top text-white space-y-10`}
+      className={`flex-col justify-center h-full ${bgColor} items-top space-y-10`}
       ref={refer}
     >
       <div className=" flex justify-center">
-        <h1 className="pt-12 text-3xl font-extralight font">Skills</h1>
+        <h1 className="pt-12 text-3xl font-extralight font text-white">
+          Skills
+        </h1>
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-6 grid-rows-2 max-w-4xl space-x-4 space-y-4">
