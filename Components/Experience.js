@@ -18,7 +18,6 @@ function Experience({ bgColor, refer }) {
                 Accenture
               </h1>
             </div>
-            si
             <div className="flex justify-end">
               <div>
                 <img src="/mile.png" alt="mile" />

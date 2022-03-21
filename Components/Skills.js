@@ -28,7 +28,7 @@ function Skills({ bgColor, refer }) {
         </h1>
       </div>
       <div className="flex justify-center">
-        <div className="grid grid-cols-6 grid-rows-2 max-w-4xl">
+        <div className="grid grid-cols-6 grid-rows-2 max-w-4xl p-4 mr-4 ml-4">
           {svgs.map((url, key) => (
             <Skill key={key} source={url} />
           ))}
