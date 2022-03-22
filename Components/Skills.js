@@ -19,7 +19,7 @@ function Skills({ bgColor, refer }) {
 
   return (
     <div
-      className={`flex-col justify-center h-full ${bgColor} items-top space-y-10`}
+      className={`flex-col justify-center md:h-full ${bgColor} items-top space-y-10`}
       ref={refer}
     >
       <div className=" flex justify-center">
@@ -27,8 +27,8 @@ function Skills({ bgColor, refer }) {
           Skills
         </h1>
       </div>
-      <div className="flex justify-center">
-        <div className="grid grid-cols-6 grid-rows-2 max-w-4xl p-4 mr-4 ml-4">
+      <div className="flex justify-center pb-12">
+        <div className="grid grid-cols-3 md:grid-cols-6 grid-rows-2 max-w-4xl p-4 mr-4 ml-4">
           {svgs.map((url, key) => (
             <Skill key={key} source={url} />
           ))}
