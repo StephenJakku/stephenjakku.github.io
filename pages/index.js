@@ -36,8 +36,6 @@ export default function Home() {
         <Projects refer={prjRef} bgColor="bg-black" />
         <Contact refer={conRef} bgColor="bg-black" />
       </main>
-
-      <footer></footer>
     </div>
   );
 }

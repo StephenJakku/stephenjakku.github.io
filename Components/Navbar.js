@@ -52,9 +52,13 @@ function Navbar({ executeScroll, refs }) {
           >
             Contact
           </li>
-          <li className="hover:border-b-2 hover:border-fuchsia-600 p-1  cursor-default">
+          <li
+            onClick={() => window.open("/UttamJakku_Resume.pdf", "_blank")}
+            className="hover:border-b-2 hover:border-fuchsia-600 p-1  cursor-default"
+          >
             Resume
           </li>
+          {/* <a href="/UttamJakku_Resume.pdf">Resume</a> */}
         </ul>
       </div>
     </div>
