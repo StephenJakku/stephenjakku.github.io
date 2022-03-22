@@ -1,3 +1,5 @@
+import Project from "./Project";
+
 function Projects({ bgColor, refer }) {
   return (
     <div
@@ -9,16 +11,24 @@ function Projects({ bgColor, refer }) {
           Projects
         </h1>
       </div>
-      <div className="grid grid-cols-3">
-        <div className="flex justify-center items-center text-white">
-          Project - 1
-        </div>
-        <div className="flex justify-center items-center text-white">
-          Project - 2
-        </div>
-        <div className="flex justify-center items-center text-white">
-          Project - 3
-        </div>
+      <div className="grid grid-cols-3 justify-center space-x-4 mx-16">
+        <Project
+          projImg="/spotify-svgrepo-com.svg"
+          projName="Spotify Clone"
+          projDesc="Spotify clone build using Next JS, Tailwind CSS, Spotify API,
+            NextAuth and Recoil. Made use of new Middleware feature from Next JS
+            12."
+        />
+        <Project
+          projImg="/monitoring.png"
+          projName="Virtual Sketcher"
+          projDesc="This is a computer vision project which detects hands and palm landmarks in real time and uses the data to create a painter application."
+        />
+        <Project
+          projImg="/next.svg"
+          projName="My Portfolio Website"
+          projDesc="Single page website built using Next Js react framework and Tailwind CSS. "
+        />
       </div>
     </div>
   );
