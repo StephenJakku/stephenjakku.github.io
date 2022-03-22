@@ -1,7 +1,7 @@
 function Experience({ bgColor, refer }) {
   return (
     <div
-      className={`flex-col justify-center h-full ${bgColor} items-top space-y-10`}
+      className={`flex-col justify-center lg:h-full ${bgColor} items-top space-y-10`}
       ref={refer}
     >
       <div className=" flex justify-center">
@@ -11,7 +11,7 @@ function Experience({ bgColor, refer }) {
       </div>
 
       <div className="flex justify-center overflow-y-scroll scrollbar-hide h-3/4 border-2 m-10 py-4">
-        <div className="grid grid-cols-2 bg-black text-white max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 bg-black text-white max-w-6xl">
           <div className="grid grid-cols-2">
             <div className="flex justify-center p-4 ">
               <h1 className="font-medium text-3xl mb-4 text-slate-50">
