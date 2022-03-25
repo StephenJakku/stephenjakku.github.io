@@ -5,20 +5,22 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve": "serve out/"
   },
   "dependencies": {
     "hamburger-react": "^2.4.1",
     "next": "12.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "serve": "^13.0.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwindcss": "^3.0.19"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.10",
-    "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.19"
+    "postcss": "^8.4.6"
   }
 }
