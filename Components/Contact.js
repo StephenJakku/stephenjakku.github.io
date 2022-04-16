@@ -1,7 +1,7 @@
 function Contact({ bgColor, refer }) {
   return (
     <div
-      className={`flex justify-center items-end h-full ${bgColor} pb-5`}
+      className={`flex justify-center items-end h-full ${bgColor} pb-5 `}
       ref={refer}
     >
       <div className="flex flex-col space-y-10">
@@ -71,7 +71,7 @@ function Contact({ bgColor, refer }) {
           </ul>
         </div>
         <div className="flex justify-center px-5 pb-10">
-          <p className="text-white max-w-sm text-center">
+          <p className="text-white text-center">
             Designed & Built by Stephen Jakku
           </p>
         </div>

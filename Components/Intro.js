@@ -2,7 +2,7 @@
 function Intro({ bgColor, refer }) {
   return (
     <div
-      className={`flex justify-center h-full ${bgColor} items-center text-white px-12`}
+      className={`flex justify-center h-full ${bgColor} items-center text-white px-12 `}
       ref={refer}
     >
       <div className="space-y-3">

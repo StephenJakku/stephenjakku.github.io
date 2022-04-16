@@ -76,7 +76,7 @@ function Navbar({ executeScroll, refs }) {
                 executeScroll(refs.sklRef);
                 setOpen(!isOpen);
               }}
-              className="hover:border-b-2 hover:border-red-600 p-1 cursor-default "
+              className="hover:border-b-2 hover:border-white p-1 cursor-default "
             >
               Skills
             </li>
@@ -85,7 +85,7 @@ function Navbar({ executeScroll, refs }) {
                 executeScroll(refs.expRef);
                 setOpen(!isOpen);
               }}
-              className="hover:border-b-2 hover:border-cyan-400 p-1  cursor-default"
+              className="hover:border-b-2 hover:border-white p-1  cursor-default"
             >
               Experience
             </li>
@@ -94,7 +94,7 @@ function Navbar({ executeScroll, refs }) {
                 executeScroll(refs.prjRef);
                 setOpen(!isOpen);
               }}
-              className="hover:border-b-2 hover:border-orange-400 p-1  cursor-default"
+              className="hover:border-b-2 hover:border-white p-1  cursor-default"
             >
               Projects
             </li>
@@ -103,7 +103,7 @@ function Navbar({ executeScroll, refs }) {
                 executeScroll(refs.conRef);
                 setOpen(!isOpen);
               }}
-              className="hover:border-b-2 hover:border-green-500 p-1  cursor-default"
+              className="hover:border-b-2 hover:border-white p-1  cursor-default"
             >
               Contact
             </li>
@@ -112,7 +112,7 @@ function Navbar({ executeScroll, refs }) {
                 window.open("/UttamJakku_Resume.pdf", "_blank");
                 setOpen(!isOpen);
               }}
-              className="hover:border-b-2 hover:border-fuchsia-600 p-1  cursor-default"
+              className="hover:border-b-2 hover:border-white p-1  cursor-default"
             >
               Resume
             </li>
