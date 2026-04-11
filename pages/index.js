@@ -1,20 +1,22 @@
 import Head from "next/head";
 import Navbar from "../Components/Navbar";
 import Intro from "../Components/Intro";
+import Education from "../Components/Education";
 import Experience from "../Components/Experience";
 import Projects from "../Components/Projects";
 import Contact from "../Components/Contact";
 import Skills from "../Components/Skills";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function Home() {
   const intRef = useRef(null);
+  const eduRef = useRef(null);
   const expRef = useRef(null);
   const sklRef = useRef(null);
   const prjRef = useRef(null);
   const conRef = useRef(null);
 
-  const ref = { intRef, sklRef, expRef, prjRef, conRef };
+  const ref = { intRef, sklRef, expRef, eduRef, prjRef, conRef };
 
   const executeScroll = (componentRef) => {
     componentRef.current.scrollIntoView({ behavior: "smooth" });
@@ -26,11 +28,12 @@ export default function Home() {
         <title>Stephen Jakku</title>
         <meta name="description" content="Portfolio website of Stephen Jakku" />
       </Head>
-      <div className="fixed top-0 left-0 right-0">
+      <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar executeScroll={executeScroll} refs={ref} />
       </div>
       <main className="h-full">
         <Intro refer={intRef} bgColor="bg-black" />
+        <Education refer={eduRef} bgColor="bg-black" />
         <Skills refer={sklRef} bgColor="bg-black" />
         <Experience refer={expRef} bgColor="bg-black" />
         <Projects refer={prjRef} bgColor="bg-black" />

@@ -1,3 +1,5 @@
+import personal from "../data/personal";
+
 function Contact({ bgColor, refer }) {
   return (
     <div
@@ -18,7 +20,7 @@ function Contact({ bgColor, refer }) {
         </div>
         <div className="flex justify-center items-center pt-10">
           <button
-            onClick={() => (window.location = "mailto:jakkustephen@gmail.com")}
+            onClick={() => (window.location = `mailto:${personal.email}`)}
             className="rounded-lg border-green-500 px-10 py-4 text-lg font-semibold border-2 text-green-500 hover:bg-green-100 hover:text-black"
           >
             Say, Hi
@@ -26,53 +28,21 @@ function Contact({ bgColor, refer }) {
         </div>
         <div className="flex justify-center items-center mx-5 pt-12">
           <ul className="flex space-x-4">
-            <li>
-              <img
-                onClick={() =>
-                  window.open("https://github.com/StephenJakku", "_blank")
-                }
-                className="h-10 w-10 hover:pb-2"
-                src="/ghub.svg"
-              ></img>
-            </li>
-            <li>
-              <img
-                onClick={() =>
-                  window.open(
-                    "https://www.linkedin.com/in/uttam-jakku",
-                    "_blank"
-                  )
-                }
-                className="h-10 w-10 hover:pb-2"
-                src="/linkedin.svg"
-              ></img>
-            </li>
-            <li>
-              <img
-                onClick={() =>
-                  window.open(
-                    "https://www.instagram.com/stephen_jak/",
-                    "_blank"
-                  )
-                }
-                className="h-10 w-10 hover:pb-2"
-                src="/insta.svg"
-              ></img>
-            </li>
-            <li>
-              <img
-                onClick={() =>
-                  window.open("https://twitter.com/stephen_jak", "_blank")
-                }
-                className="h-10 w-10 hover:pb-2"
-                src="/twitter.svg"
-              ></img>
-            </li>
+            {personal.socials.map((social) => (
+              <li key={social.label}>
+                <img
+                  onClick={() => window.open(social.url, "_blank")}
+                  className="h-10 w-10 hover:pb-2 cursor-pointer"
+                  src={social.icon}
+                  alt={social.label}
+                />
+              </li>
+            ))}
           </ul>
         </div>
         <div className="flex justify-center px-5 pb-10">
           <p className="text-white text-center">
-            Designed & Built by Stephen Jakku
+            Designed & Built by {personal.name}
           </p>
         </div>
       </div>

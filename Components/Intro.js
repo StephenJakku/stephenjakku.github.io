@@ -1,3 +1,5 @@
+import personal from "../data/personal";
+
 /* eslint-disable react/no-unescaped-entities */
 function Intro({ bgColor, refer }) {
   return (
@@ -7,12 +9,8 @@ function Intro({ bgColor, refer }) {
     >
       <div className="space-y-3">
         <p>Hey, I am</p>
-        <p className="text-5xl">Stephen Jakku</p>
-        <p className="max-w-xl">
-          Currently a Computer Science graduate student at California State
-          University - Long Beach. I am an experienced DevOps Engineer,
-          Middleware Developer who's trying to explore the front end world!
-        </p>
+        <p className="text-5xl">{personal.name}</p>
+        <p className="max-w-xl">{personal.bio}</p>
       </div>
     </div>
   );
