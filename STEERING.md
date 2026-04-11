@@ -4,7 +4,7 @@
 
 Personal portfolio website for Stephen Jakku. Built as a **Next.js static export** deployed to **GitHub Pages** at `stephenjakku.github.io`.
 
-Single-page application (SPA) with smooth scroll navigation across five sections: Intro, Skills, Experience, Projects, Contact.
+Single-page application (SPA) with snap-scroll navigation across six sections: Intro, Education, Skills, Experience, Projects, Contact.
 
 ---
 
@@ -12,10 +12,11 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 
 | Layer | Choice |
 |-------|--------|
-| Framework | Next.js 12 (React 17) |
-| Styling | Tailwind CSS v3 |
+| Framework | Next.js 16.2.3 (React 18) |
+| Styling | Tailwind CSS v3 (pinned — do not upgrade to v4, it's a breaking change) |
+| Animations | framer-motion 12 (intro section only) |
 | Deployment | GitHub Pages via GitHub Actions |
-| Build output | Static (`next export` → `/out`) |
+| Build output | Static export via `output: 'export'` in `next.config.js` → `/out` |
 | Extras | `hamburger-react` (mobile nav), `tailwind-scrollbar-hide` |
 
 ---
@@ -26,42 +27,42 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 /
 ├── pages/
 │   ├── _app.js              # Global app wrapper (imports globals.css)
-│   ├── index.js             # Entry point — wires refs + renders all sections
+│   ├── index.js             # Entry point — wires refs, scroll container, renders sections
 │   └── api/hello.js         # Unused Next.js API template (safe to ignore)
 │
 ├── Components/
 │   ├── Navbar.js            # Fixed top nav with smooth scroll + mobile hamburger
-│   ├── Intro.js             # Hero/landing section
-│   ├── Skills.js            # Skills grid (renders Skill.js for each item)
-│   ├── Skill.js             # Single skill logo card
+│   ├── Intro.js             # Hero/landing section (has Framer Motion animation)
 │   ├── Education.js         # Education cards (renders from data/education.js)
+│   ├── Skills.js            # Skills as white pill chips (renders from data/skills.js)
+│   ├── Skill.js             # Unused — kept but not referenced by Skills.js
 │   ├── Experience.js        # Work experience cards (renders from data/experience.js)
 │   ├── Projects.js          # Projects grid (renders Project.js for each item)
-│   ├── Project.js           # Single project card
+│   ├── Project.js           # Single project card with tags + GitHub link
 │   └── Contact.js           # Contact CTA + social links + footer
 │
 ├── data/                    # All site content lives here — edit this, not components
-│   ├── personal.js          # Name, bio, email, social links
-│   ├── skills.js            # Skill list with name + logo URL
+│   ├── personal.js          # Name, bio, email, resume URL, social links
+│   ├── skills.js            # Skills grouped by category (category, glow, items[])
 │   ├── education.js         # Education history (institution, degree, field, duration)
-│   ├── experience.js        # Work history (company, role, dates, bullets)
-│   └── projects.js          # Project cards (name, description, image, URL, tags)
+│   ├── experience.js        # Work history (company, role, team, location, duration, bullets[])
+│   └── projects.js          # Projects (name, description, image, url, tags[])
 │
 ├── public/                  # Static assets served at root
 │   ├── ghub.svg             # GitHub icon
 │   ├── linkedin.svg         # LinkedIn icon
 │   ├── insta.svg            # Instagram icon
 │   ├── twitter.svg          # Twitter icon
-│   ├── mile.png             # Accenture logo
 │   ├── monitoring.png       # Virtual Sketcher project image
-│   └── UttamJakku_Resume.pdf  # Resume (replace this file to update resume)
+│   ├── spotify-svgrepo-com.svg  # Spotify Clone project image
+│   └── UttamJakku_Resume.pdf   # Resume (replace this file to update resume)
 │
 ├── styles/
-│   ├── globals.css          # Tailwind directives + base html/body styles
+│   ├── globals.css          # Inter font import, Tailwind directives, section-title component
 │   └── Home.module.css      # Legacy (commented out, safe to ignore)
 │
-├── tailwind.config.js       # Tailwind config — extend here for custom colors/fonts
-├── next.config.js           # Next.js config (React Strict Mode enabled)
+├── tailwind.config.js       # Extends theme: Inter font, accent color (#38bdf8), hero gradient
+├── next.config.js           # output: export, reactStrictMode, images.unoptimized
 ├── postcss.config.js        # Tailwind + Autoprefixer
 └── package.json
 ```
@@ -70,10 +71,14 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 
 ## How Navigation Works
 
-`pages/index.js` creates `useRef` for each section and passes them down:
-- Each section component receives a `refer` prop and attaches it to its root `div`
-- `Navbar.js` receives `executeScroll` + `refs` props and calls `ref.current.scrollIntoView({ behavior: 'smooth' })` on nav clicks
+`pages/index.js` is the scroll container:
+- The `<main>` element has `h-screen overflow-y-scroll snap-y snap-mandatory` — it is the scroll root
+- Each section has `min-h-screen snap-start` so it snaps cleanly into the viewport
+- `useRef` is created for each section (intRef, eduRef, sklRef, expRef, prjRef, conRef)
+- `executeScroll` calls `ref.current.scrollIntoView({ behavior: 'smooth' })`
+- `Navbar` is `position: fixed` to the viewport (outside the scroll container), `z-50`
 - Mobile nav uses `hamburger-react` (Sling animation) toggled by `isOpen` state
+- Experience section has no fixed height — it's taller than the viewport and scrolls naturally through 4 roles before snapping to the next section
 
 ---
 
@@ -84,9 +89,9 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 | What to update | File to edit |
 |----------------|-------------|
 | Name, bio, tagline | `data/personal.js` |
-| Email, social URLs | `data/personal.js` |
+| Email, resume URL, social links | `data/personal.js` |
 | Education history | `data/education.js` |
-| Skills list | `data/skills.js` |
+| Skills (add/remove/recategorize) | `data/skills.js` |
 | Work experience | `data/experience.js` |
 | Projects | `data/projects.js` |
 | Resume PDF | Replace `public/UttamJakku_Resume.pdf` |
@@ -95,16 +100,20 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 
 ## Styling Conventions
 
-- All styling via **Tailwind utility classes** — no custom CSS classes
-- Color scheme: black background (`bg-black`), white text
-- Section accent colors used in nav hover states:
-  - Skills → `red-600`
-  - Experience → `cyan-400`
+- All styling via **Tailwind utility classes** — no custom CSS classes except `section-title`
+- **Font**: Inter (loaded via `@import` in `globals.css`, configured in `tailwind.config.js`)
+- **Color scheme**: `bg-black` and `bg-zinc-950` alternating per section, white text
+- **Accent color**: `#38bdf8` (sky-400) — used for borders, glows, highlights. Available as `text-accent`, `bg-accent`, `border-accent` via Tailwind config
+- **`section-title`** CSS component class: centers section headings with a sky-blue underline accent — defined in `globals.css`
+- **Sections**: `min-h-screen snap-start flex flex-col justify-center` — each section fills the viewport and centers its content
+- **Nav accent colors** (hover border per nav item):
+  - Education → `yellow-400`
+  - Skills → `red-500`
+  - Experience → `accent` (sky-400)
   - Projects → `orange-400`
-  - Contact → `green-500`
-  - Resume → `fuchsia-600`
+  - Contact → `green-400`
+  - Resume → styled as an outline button with `accent` color
 - Responsive breakpoints: `md:` (768px tablet), `lg:` (1024px desktop)
-- Each full-screen section uses `h-full` (html/body are set to `height: 100%` in globals.css)
 
 ---
 
@@ -112,13 +121,13 @@ Single-page application (SPA) with smooth scroll navigation across five sections
 
 Automated via `.github/workflows/cr.yml`:
 1. Push to `main` branch triggers the workflow
-2. Runs `npm install` + `npm run build` (which runs `next build && next export`)
+2. Runs `npm install` + `npm run build` (`next build` — static export handled by `output: 'export'` in config)
 3. Deploys the `/out` folder to the `gh-pages` branch
 4. GitHub Pages serves from `gh-pages`
 
 **Local development:**
 ```bash
-npm run dev        # Dev server at localhost:3000 (hot reload)
+npm run dev        # Dev server at localhost:3000 (hot reload, Turbopack)
 npm run build      # Build static export to /out
 npm run serve      # Serve /out at localhost:3000
 ```
@@ -127,7 +136,11 @@ npm run serve      # Serve /out at localhost:3000
 
 ## Known Issues / Gotchas
 
-- Next.js `<Image>` component requires special config for static export; use plain `<img>` tags for now
-- Skill logos are loaded from external URLs (Wikimedia, vectorlogo.zone) — network dependent
-- The Resume link in Navbar points to `/UttamJakku_Resume.pdf` — update the filename if the PDF changes
+- **Tailwind pinned to v3** — `tailwindcss@latest` installs v4 which has a completely different config format. Do not upgrade without a planned migration.
+- **`next export` is removed** in Next.js 13+ — static export is configured via `output: 'export'` in `next.config.js`. The build script is just `next build`.
+- **Skill logos** use the devicons CDN (`cdn.jsdelivr.net/gh/devicons/devicon`) — network dependent, but more reliable than the old Wikimedia/vectorlogo.zone mix.
+- **`Skill.js`** component is unused — `Skills.js` renders inline chips now. Safe to delete if cleaning up.
+- **Framer Motion** is only used in `Intro.js` — do not add `whileInView` animations to other sections (intentional decision for cleaner UX).
+- **Next.js `<Image>`** requires `images.unoptimized: true` for static export — already configured. Use plain `<img>` tags or the Next.js Image component, both work.
+- **Resume filename**: Navbar and Intro buttons use `personal.resumeUrl` from `data/personal.js`. Update that field if the PDF filename changes.
 - No TypeScript — all files are `.js`
