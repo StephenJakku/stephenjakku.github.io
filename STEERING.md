@@ -27,15 +27,13 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 /
 ├── pages/
 │   ├── _app.js              # Global app wrapper (imports globals.css)
-│   ├── index.js             # Entry point — wires refs, scroll container, renders sections
-│   └── api/hello.js         # Unused Next.js API template (safe to ignore)
+│   └── index.js             # Entry point — wires refs, scroll container, renders sections
 │
 ├── Components/
 │   ├── Navbar.js            # Fixed top nav with smooth scroll + mobile hamburger
 │   ├── Intro.js             # Hero/landing section (has Framer Motion animation)
 │   ├── Education.js         # Education cards (renders from data/education.js)
 │   ├── Skills.js            # Skills as white pill chips (renders from data/skills.js)
-│   ├── Skill.js             # Unused — kept but not referenced by Skills.js
 │   ├── Experience.js        # Work experience cards (renders from data/experience.js)
 │   ├── Projects.js          # Projects grid (renders Project.js for each item)
 │   ├── Project.js           # Single project card with tags + GitHub link
@@ -58,8 +56,7 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 │   └── UttamJakku_Resume.pdf   # Resume (replace this file to update resume)
 │
 ├── styles/
-│   ├── globals.css          # Inter font import, Tailwind directives, section-title component
-│   └── Home.module.css      # Legacy (commented out, safe to ignore)
+│   └── globals.css          # Inter font import, Tailwind directives, section-title component
 │
 ├── tailwind.config.js       # Extends theme: Inter font, accent color (#38bdf8), hero gradient
 ├── next.config.js           # output: export, reactStrictMode, images.unoptimized
@@ -76,7 +73,7 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 - Each section has `min-h-screen snap-start` so it snaps cleanly into the viewport
 - `useRef` is created for each section (intRef, eduRef, sklRef, expRef, prjRef, conRef)
 - `executeScroll` calls `ref.current.scrollIntoView({ behavior: 'smooth' })`
-- `Navbar` is `position: fixed` to the viewport (outside the scroll container), `z-50`
+- `Navbar` is `position: fixed` to the viewport (outside the scroll container), `z-50`, fully transparent — no background or blur
 - Mobile nav uses `hamburger-react` (Sling animation) toggled by `isOpen` state
 - Experience section has no fixed height — it's taller than the viewport and scrolls naturally through 4 roles before snapping to the next section
 
@@ -139,7 +136,6 @@ npm run serve      # Serve /out at localhost:3000
 - **Tailwind pinned to v3** — `tailwindcss@latest` installs v4 which has a completely different config format. Do not upgrade without a planned migration.
 - **`next export` is removed** in Next.js 13+ — static export is configured via `output: 'export'` in `next.config.js`. The build script is just `next build`.
 - **Skill logos** use the devicons CDN (`cdn.jsdelivr.net/gh/devicons/devicon`) — network dependent, but more reliable than the old Wikimedia/vectorlogo.zone mix.
-- **`Skill.js`** component is unused — `Skills.js` renders inline chips now. Safe to delete if cleaning up.
 - **Framer Motion** is only used in `Intro.js` — do not add `whileInView` animations to other sections (intentional decision for cleaner UX).
 - **Next.js `<Image>`** requires `images.unoptimized: true` for static export — already configured. Use plain `<img>` tags or the Next.js Image component, both work.
 - **Resume filename**: Navbar and Intro buttons use `personal.resumeUrl` from `data/personal.js`. Update that field if the PDF filename changes.
