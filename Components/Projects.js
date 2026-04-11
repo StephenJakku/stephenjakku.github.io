@@ -1,19 +1,17 @@
 import Project from "./Project";
 import projects from "../data/projects";
 
-function Projects({ bgColor, refer }) {
+function Projects({ refer }) {
   return (
     <div
-      className={`flex-col justify-center lgh-full ${bgColor} items-top space-y-10`}
+      className="min-h-screen snap-start flex flex-col justify-center bg-black"
       ref={refer}
     >
       <div className="flex justify-center">
-        <h1 className="pt-12 text-3xl font-extralight font text-white">
-          Projects
-        </h1>
+        <h1 className="section-title">Projects</h1>
       </div>
-      <div className="flex justify-center pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-4 mx-4">
+      <div className="flex justify-center mt-8 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-6 max-w-5xl">
           {projects.map((project, index) => (
             <Project
               key={index}

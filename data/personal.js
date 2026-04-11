@@ -1,7 +1,7 @@
 const personal = {
   name: "Stephen Jakku",
-  bio: "Currently a Computer Science graduate student at California State University - Long Beach. I am an experienced DevOps Engineer, Middleware Developer who's trying to explore the front end world!",
-  email: "jakkustephen@gmail.com",
+  bio: "Software Development Engineer with 6+ years of experience building large-scale distributed systems. Currently at Amazon working on Ads infrastructure and LLM-powered platforms. Strong in Java, AWS architecture, and full-stack development.",
+  email: "uttamjakku96@gmail.com",
   resumeUrl: "/UttamJakku_Resume.pdf",
   socials: [
     {

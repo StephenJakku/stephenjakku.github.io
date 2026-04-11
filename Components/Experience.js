@@ -1,47 +1,37 @@
 import experience from "../data/experience";
 
-function Experience({ bgColor, refer }) {
+function Experience({ refer }) {
   return (
     <div
-      className={`flex-col justify-center lg:h-full ${bgColor} items-top space-y-10 `}
+      className="snap-start flex flex-col items-center bg-zinc-950 py-24"
       ref={refer}
     >
-      <div className=" flex justify-center">
-        <h1 className="pt-12 text-3xl font-extralight font text-white">
-          Experience
-        </h1>
-      </div>
+      <h1 className="section-title">Experience</h1>
 
-      <div className="flex justify-center overflow-y-scroll scrollbar-hide h-3/4 border-2 m-10 py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 bg-black text-white max-w-6xl">
-          {experience.map((job, index) => (
-            <>
-              <div key={`header-${index}`} className="grid grid-cols-2">
-                <div className="flex justify-center p-4">
-                  <h1 className="font-medium text-3xl mb-4 text-slate-50">
-                    {job.company}
-                  </h1>
-                </div>
-                <div className="flex justify-end">
-                  <img src={job.logo} alt={job.company} />
-                </div>
+      <div className="flex flex-col gap-6 w-full max-w-3xl mx-6 mt-10">
+        {experience.map((job, index) => (
+          <div
+            key={index}
+            className="border border-white/10 rounded-lg p-6 hover:border-accent/40 transition-colors"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
+              <div>
+                <h2 className="text-white text-lg font-semibold">{job.role}</h2>
+                <p className="text-accent text-sm font-medium">{job.company}{job.team ? ` · ${job.team}` : ""}</p>
+                <p className="text-slate-600 text-xs mt-0.5">{job.location}</p>
               </div>
-              <div key={`detail-${index}`} className="p-4">
-                <ul className="list">
-                  <li className="font-medium text-lg mb-4 text-slate-50">
-                    {job.role}
-                  </li>
-                  {job.duration && (
-                    <li className="text-slate-400 text-sm mb-3">{job.duration}</li>
-                  )}
-                  {job.bullets.map((bullet, i) => (
-                    <li key={i}>• {bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            </>
-          ))}
-        </div>
+              <span className="text-slate-500 text-xs whitespace-nowrap mt-1">{job.duration}</span>
+            </div>
+            <ul className="space-y-2">
+              {job.bullets.map((bullet, i) => (
+                <li key={i} className="text-slate-400 text-sm leading-relaxed flex gap-2">
+                  <span className="text-accent mt-1 flex-shrink-0">›</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );

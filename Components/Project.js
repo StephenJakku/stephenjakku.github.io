@@ -1,34 +1,31 @@
 function Project({ projImg, projName, projDesc, projUrl, projTags }) {
   return (
-    <div className="flex flex-col text-black max-w-xs space-y-5 bg-slate-100 p-7 rounded-md justify-between">
-      <div className="space-y-5">
-        <div className="flex justify-center items-center">
-          <img className="h-36 w-36 mb-5" src={projImg} alt={projName} />
+    <div className="flex flex-col space-y-4 bg-zinc-900 border border-white/10 p-6 rounded-lg hover:border-accent/40 transition-all duration-200 group">
+      <div className="flex justify-center items-center bg-black/40 rounded-md p-4 h-32">
+        <img className="h-20 w-20 object-contain" src={projImg} alt={projName} />
+      </div>
+      <div className="space-y-2 flex-1">
+        <h1 className="text-white font-semibold text-base">{projName}</h1>
+        <p className="text-slate-400 text-sm leading-relaxed">{projDesc}</p>
+      </div>
+      {projTags && projTags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {projTags.map((tag, i) => (
+            <span
+              key={i}
+              className="text-xs bg-accent/10 text-accent border border-accent/20 px-2 py-0.5 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
-        <h1 className="font-bold">{projName}</h1>
-        <p>{projDesc}</p>
-        {projTags && projTags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
-            {projTags.map((tag, i) => (
-              <span
-                key={i}
-                className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="flex justify-center items-center">
-        <button
-          className="bg-blue-500 px-5 py-2 rounded-sm mt-10 hover:bg-blue-700 text-white"
-          onClick={() => window.open(projUrl, "_blank")}
-        >
-          View
-        </button>
-      </div>
+      )}
+      <button
+        className="w-full border border-white/20 text-white text-sm py-2 rounded hover:border-accent hover:text-accent transition-all duration-200 mt-2"
+        onClick={() => window.open(projUrl, "_blank")}
+      >
+        View on GitHub
+      </button>
     </div>
   );
 }

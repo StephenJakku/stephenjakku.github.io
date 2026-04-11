@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,9 +9,20 @@ body {
   padding: 0;
   margin: 0;
   height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #000;
+  color: #fff;
 }
+
 div#__next {
   height: 100%;
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl font-light text-white tracking-wide pt-16 pb-2 relative;
+  }
+  .section-title::after {
+    content: '';
+    @apply block w-12 h-0.5 bg-accent mt-3 mx-auto;
+  }
 }

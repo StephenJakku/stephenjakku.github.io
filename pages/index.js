@@ -23,21 +23,25 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full">
+    <div className="h-screen overflow-hidden bg-black">
       <Head>
         <title>Stephen Jakku</title>
         <meta name="description" content="Portfolio website of Stephen Jakku" />
       </Head>
+
+      {/* Navbar fixed to viewport */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar executeScroll={executeScroll} refs={ref} />
       </div>
-      <main className="h-full">
-        <Intro refer={intRef} bgColor="bg-black" />
-        <Education refer={eduRef} bgColor="bg-black" />
-        <Skills refer={sklRef} bgColor="bg-black" />
-        <Experience refer={expRef} bgColor="bg-black" />
-        <Projects refer={prjRef} bgColor="bg-black" />
-        <Contact refer={conRef} bgColor="bg-black" />
+
+      {/* Scrollable snap container — sits below navbar */}
+      <main className="h-screen overflow-y-scroll snap-y snap-mandatory pt-14 scroll-smooth">
+        <Intro refer={intRef} />
+        <Education refer={eduRef} />
+        <Skills refer={sklRef} />
+        <Experience refer={expRef} />
+        <Projects refer={prjRef} />
+        <Contact refer={conRef} />
       </main>
     </div>
   );

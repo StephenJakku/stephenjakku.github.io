@@ -1,50 +1,37 @@
 import personal from "../data/personal";
 
-function Contact({ bgColor, refer }) {
+function Contact({ refer }) {
   return (
     <div
-      className={`flex justify-center items-end h-full ${bgColor} pb-5 `}
+      className="min-h-screen snap-start flex flex-col justify-center items-center bg-zinc-950 py-20"
       ref={refer}
     >
-      <div className="flex flex-col space-y-10">
-        <div className="flex justify-center items-center">
-          <h1 className="pt-12 text-3xl font-extralight font text-white">
-            Get In Touch
-          </h1>
+      <div className="flex flex-col items-center space-y-8 max-w-lg mx-6 text-center">
+        <h1 className="section-title">Get In Touch</h1>
+        <p className="text-slate-400 text-lg leading-relaxed">
+          I am currently open for new opportunities. Whether it's a question or
+          just a hello — my inbox is always open.
+        </p>
+        <button
+          onClick={() => (window.location = `mailto:${personal.email}`)}
+          className="bg-accent text-black font-semibold px-10 py-3 rounded hover:opacity-90 transition-opacity text-base"
+        >
+          Say Hi
+        </button>
+        <div className="flex space-x-5 pt-4">
+          {personal.socials.map((social) => (
+            <img
+              key={social.label}
+              onClick={() => window.open(social.url, "_blank")}
+              className="h-7 w-7 cursor-pointer opacity-60 hover:opacity-100 hover:-translate-y-1 transition-all duration-200"
+              src={social.icon}
+              alt={social.label}
+            />
+          ))}
         </div>
-        <div className="flex justify-center items-center px-12">
-          <p className="text-white max-w-lg text-center text-xl">
-            I am currently open for any new opportunities, my inbox is always
-            open. I am just a click away
-          </p>
-        </div>
-        <div className="flex justify-center items-center pt-10">
-          <button
-            onClick={() => (window.location = `mailto:${personal.email}`)}
-            className="rounded-lg border-green-500 px-10 py-4 text-lg font-semibold border-2 text-green-500 hover:bg-green-100 hover:text-black"
-          >
-            Say, Hi
-          </button>
-        </div>
-        <div className="flex justify-center items-center mx-5 pt-12">
-          <ul className="flex space-x-4">
-            {personal.socials.map((social) => (
-              <li key={social.label}>
-                <img
-                  onClick={() => window.open(social.url, "_blank")}
-                  className="h-10 w-10 hover:pb-2 cursor-pointer"
-                  src={social.icon}
-                  alt={social.label}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex justify-center px-5 pb-10">
-          <p className="text-white text-center">
-            Designed & Built by {personal.name}
-          </p>
-        </div>
+        <p className="text-slate-600 text-sm pt-6">
+          Designed & Built by {personal.name}
+        </p>
       </div>
     </div>
   );

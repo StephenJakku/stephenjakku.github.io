@@ -1,27 +1,35 @@
 const projects = [
   {
+    name: "Indimitra",
+    description:
+      "Full-stack multi-store Indian grocery delivery platform with a FastAPI + Strawberry GraphQL backend and React + TypeScript + Tailwind frontend. Containerized with Docker and deployed on AWS behind Nginx.",
+    image: "/next.svg",
+    url: "https://github.com/StephenJakku",
+    tags: ["FastAPI", "GraphQL", "React", "TypeScript", "PostgreSQL", "Docker", "AWS"],
+  },
+  {
     name: "Spotify Clone",
     description:
-      "Spotify clone built using Next.js, Tailwind CSS, Spotify API, NextAuth and Recoil. Made use of the new Middleware feature from Next.js 12.",
+      "Responsive single-page app replicating core Spotify functionalities — authentication, playlists, and playback — using Next.js, Tailwind CSS, Spotify API, and NextAuth.",
     image: "/spotify-svgrepo-com.svg",
     url: "https://github.com/StephenJakku/spotify-webapp-tailwindcss",
     tags: ["Next.js", "Tailwind CSS", "Spotify API", "NextAuth", "Recoil"],
   },
   {
+    name: "Full-Stack Social App",
+    description:
+      "Social media web app where users can register, upload pictures, like posts, view comments, and manage friends. Built on the MERN stack with JWT auth and Redux state management.",
+    image: "/next.svg",
+    url: "https://github.com/StephenJakku",
+    tags: ["MongoDB", "Express", "React", "Node.js", "Redux", "JWT"],
+  },
+  {
     name: "Virtual Sketcher",
     description:
-      "A computer vision project that detects hands and palm landmarks in real time and uses the data to drive a painter application.",
+      "Real-time hand and palm landmark detection project using OpenCV, Mediapipe, and Python to enable finger-based virtual drawing.",
     image: "/monitoring.png",
     url: "https://github.com/StephenJakku/virtualsketcher",
     tags: ["Python", "OpenCV", "MediaPipe"],
-  },
-  {
-    name: "Portfolio Website",
-    description:
-      "Single-page portfolio built using Next.js and Tailwind CSS, deployed to GitHub Pages via GitHub Actions.",
-    image: "/next.svg",
-    url: "https://github.com/StephenJakku/stephenjakku.github.io",
-    tags: ["Next.js", "Tailwind CSS", "GitHub Pages"],
   },
 ];
 
