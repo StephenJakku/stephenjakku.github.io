@@ -29,11 +29,7 @@ function SkillChip({ skill }) {
 
 function Skills({ refer }) {
   const allSkills = skills.flatMap((group) =>
-    group.items.map((item) => ({
-      ...item,
-      glow: group.glow,
-      borderActive: group.borderActive,
-    }))
+    group.items.map((item) => ({ ...item }))
   );
 
   return (
@@ -46,13 +42,9 @@ function Skills({ refer }) {
         <p className="text-slate-500 text-sm mt-2 mb-12 text-center">
           Technologies and tools I work with
         </p>
-
         <div className="flex flex-wrap justify-center gap-4">
           {allSkills.map((skill) => (
-            <SkillChip
-              key={skill.name}
-              skill={skill}
-            />
+            <SkillChip key={skill.name} skill={skill} />
           ))}
         </div>
       </div>

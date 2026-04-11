@@ -20,9 +20,7 @@ function Education({ refer }) {
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <div className="space-y-2">
-                  <h2 className="text-white text-xl font-semibold">
-                    {edu.institution}
-                  </h2>
+                  <h2 className="text-white text-xl font-semibold">{edu.institution}</h2>
                   <p className="text-slate-400">
                     {edu.degree} &mdash; {edu.field}
                   </p>

@@ -1,4 +1,15 @@
+import { motion } from "framer-motion";
 import personal from "../data/personal";
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 function Intro({ refer }) {
   return (
@@ -6,17 +17,22 @@ function Intro({ refer }) {
       className="min-h-screen snap-start flex flex-col justify-center bg-hero-gradient px-8"
       ref={refer}
     >
-      <div className="max-w-2xl space-y-6 mx-auto w-full">
-        <p className="text-accent text-sm font-medium tracking-widest uppercase">
+      <motion.div
+        className="max-w-2xl space-y-6 mx-auto w-full"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.p variants={item} className="text-accent text-sm font-medium tracking-widest uppercase">
           Hey, I am
-        </p>
-        <h1 className="text-6xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
+        </motion.p>
+        <motion.h1 variants={item} className="text-6xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
           {personal.name}
-        </h1>
-        <p className="text-slate-400 text-lg leading-relaxed max-w-xl">
+        </motion.h1>
+        <motion.p variants={item} className="text-slate-400 text-lg leading-relaxed max-w-xl">
           {personal.bio}
-        </p>
-        <div className="flex gap-4 pt-2">
+        </motion.p>
+        <motion.div variants={item} className="flex gap-4 pt-2">
           <button
             onClick={() => (window.location = `mailto:${personal.email}`)}
             className="bg-accent text-black font-semibold px-6 py-2.5 rounded hover:opacity-90 transition-opacity text-sm"
@@ -29,8 +45,8 @@ function Intro({ refer }) {
           >
             View Resume
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

@@ -17,7 +17,9 @@ function Experience({ refer }) {
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
               <div>
                 <h2 className="text-white text-lg font-semibold">{job.role}</h2>
-                <p className="text-accent text-sm font-medium">{job.company}{job.team ? ` · ${job.team}` : ""}</p>
+                <p className="text-accent text-sm font-medium">
+                  {job.company}{job.team ? ` · ${job.team}` : ""}
+                </p>
                 <p className="text-slate-600 text-xs mt-0.5">{job.location}</p>
               </div>
               <span className="text-slate-500 text-xs whitespace-nowrap mt-1">{job.duration}</span>
