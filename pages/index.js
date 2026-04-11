@@ -35,7 +35,7 @@ export default function Home() {
       </div>
 
       {/* Scrollable snap container — sits below navbar */}
-      <main className="h-screen overflow-y-scroll snap-y snap-mandatory pt-14 scroll-smooth">
+      <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
         <Intro refer={intRef} />
         <Education refer={eduRef} />
         <Skills refer={sklRef} />

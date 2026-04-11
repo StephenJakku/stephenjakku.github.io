@@ -2,7 +2,7 @@ import { Sling as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import personal from "../data/personal";
 
-function Navbar({ executeScroll, refs }) {
+function Navbar({ executeScroll, refs, scrolled }) {
   const [isOpen, setOpen] = useState(false);
 
   const navItems = [
@@ -14,11 +14,11 @@ function Navbar({ executeScroll, refs }) {
   ];
 
   return (
-    <div className="border-b border-white/10 bg-black/90 backdrop-blur-md">
-      <div className="grid grid-cols-2 h-14">
+    <div>
+      <div className="grid grid-cols-2 h-14 px-1">
         <div className="flex text-white justify-start items-center">
           <h1
-            className="pl-5 cursor-pointer text-xl font-semibold tracking-widest text-accent hover:opacity-80 transition-opacity"
+            className="pl-4 cursor-pointer text-xl font-semibold tracking-widest text-accent hover:opacity-80 transition-opacity"
             onClick={() => {
               executeScroll(refs.intRef);
               if (isOpen) setOpen(false);
@@ -53,7 +53,7 @@ function Navbar({ executeScroll, refs }) {
       </div>
 
       {isOpen && (
-        <div className="bg-zinc-950 border-t border-white/10 py-3">
+        <div className="bg-zinc-950/95 py-3">
           <ul className="flex flex-col items-center text-white text-sm font-medium space-y-3">
             {navItems.map((item) => (
               <li
