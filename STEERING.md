@@ -15,6 +15,7 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 | Framework | Next.js 16.2.3 (React 18) |
 | Styling | Tailwind CSS v3 (pinned — do not upgrade to v4, it's a breaking change) |
 | Animations | framer-motion 12 (intro section only) |
+| Theming | `next-themes` — dark/light toggle, default dark, `darkMode: 'class'` in Tailwind |
 | Deployment | GitHub Pages via GitHub Actions |
 | Build output | Static export via `output: 'export'` in `next.config.js` → `/out` |
 | Extras | `hamburger-react` (mobile nav), `tailwind-scrollbar-hide` |
@@ -30,7 +31,8 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 │   └── index.js             # Entry point — wires refs, scroll container, renders sections
 │
 ├── Components/
-│   ├── Navbar.js            # Fixed top nav with smooth scroll + mobile hamburger
+│   ├── Navbar.js            # Fixed top nav with smooth scroll + mobile hamburger + ThemeToggle
+│   ├── ThemeToggle.js       # Sun/moon icon button — toggles dark/light theme via next-themes
 │   ├── Intro.js             # Hero/landing section (has Framer Motion animation)
 │   ├── Education.js         # Education cards (renders from data/education.js)
 │   ├── Skills.js            # Skills as white pill chips (renders from data/skills.js)
@@ -99,7 +101,8 @@ Single-page application (SPA) with snap-scroll navigation across six sections: I
 
 - All styling via **Tailwind utility classes** — no custom CSS classes except `section-title`
 - **Font**: Inter (loaded via `@import` in `globals.css`, configured in `tailwind.config.js`)
-- **Color scheme**: `bg-black` and `bg-zinc-950` alternating per section, white text
+- **Color scheme**: Dark mode — `bg-black` / `bg-zinc-950` / `bg-zinc-950` alternating, white text. Light mode — `bg-white` / `bg-slate-50` / `bg-slate-100` alternating, `text-slate-900`. Use `dark:` prefix for all color variants — never hardcode a single-theme color on a shared component.
+- **Theme toggle**: `ThemeProvider` in `_app.js` wraps the app with `defaultTheme="dark"` and `attribute="class"`. Toggle is rendered in `Navbar.js` (both desktop and mobile). Dark mode is the designed/preferred theme.
 - **Accent color**: `#38bdf8` (sky-400) — used for borders, glows, highlights. Available as `text-accent`, `bg-accent`, `border-accent` via Tailwind config
 - **`section-title`** CSS component class: centers section headings with a sky-blue underline accent — defined in `globals.css`
 - **Sections**: `min-h-screen snap-start flex flex-col justify-center` — each section fills the viewport and centers its content
