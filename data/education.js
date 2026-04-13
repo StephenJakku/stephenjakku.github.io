@@ -15,7 +15,7 @@ const education = [
     institution: "CVR College of Engineering",
     degree: "Bachelor of Technology",
     field: "Information Technology",
-    duration: "2013 – 2017",
+    duration: "Aug 2013 – Apr 2017",
   },
 ];
 
