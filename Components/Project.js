@@ -1,12 +1,12 @@
 function Project({ projImg, projName, projDesc, projUrl, projTags }) {
   return (
-    <div className="flex flex-col space-y-4 bg-zinc-900 border border-white/10 p-6 rounded-lg hover:border-accent/40 transition-all duration-200 group">
-      <div className="flex justify-center items-center bg-black/40 rounded-md p-4 h-32">
+    <div className="flex flex-col space-y-4 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-white/10 p-6 rounded-lg hover:border-accent/40 transition-all duration-200 group">
+      <div className="flex justify-center items-center bg-slate-200 dark:bg-black/40 rounded-md p-4 h-32">
         <img className="h-20 w-20 object-contain" src={projImg} alt={projName} />
       </div>
       <div className="space-y-2 flex-1">
-        <h1 className="text-white font-semibold text-base">{projName}</h1>
-        <p className="text-slate-400 text-sm leading-relaxed">{projDesc}</p>
+        <h1 className="text-slate-900 dark:text-white font-semibold text-base">{projName}</h1>
+        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{projDesc}</p>
       </div>
       {projTags && projTags.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
@@ -21,7 +21,7 @@ function Project({ projImg, projName, projDesc, projUrl, projTags }) {
         </div>
       )}
       <button
-        className="w-full border border-white/20 text-white text-sm py-2 rounded hover:border-accent hover:text-accent transition-all duration-200 mt-2"
+        className="w-full border border-slate-300 dark:border-white/20 text-slate-600 dark:text-white text-sm py-2 rounded hover:border-accent hover:text-accent transition-all duration-200 mt-2"
         onClick={() => window.open(projUrl, "_blank")}
       >
         View on GitHub

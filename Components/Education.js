@@ -3,7 +3,7 @@ import education from "../data/education";
 function Education({ refer }) {
   return (
     <div
-      className="min-h-screen snap-start flex flex-col justify-center bg-zinc-950"
+      className="min-h-screen snap-start flex flex-col justify-center bg-white dark:bg-zinc-950"
       ref={refer}
     >
       <div className="flex flex-col items-center w-full max-w-3xl mx-auto px-6">
@@ -16,12 +16,12 @@ function Education({ refer }) {
           {education.map((edu, index) => (
             <div
               key={index}
-              className="border-l-2 border-accent pl-8 py-6 bg-white/5 rounded-r-xl hover:bg-white/8 transition-colors"
+              className="border-l-2 border-accent pl-8 py-6 bg-slate-50 dark:bg-white/5 rounded-r-xl hover:bg-slate-100 dark:hover:bg-white/8 transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <div className="space-y-2">
-                  <h2 className="text-white text-xl font-semibold">{edu.institution}</h2>
-                  <p className="text-slate-400">
+                  <h2 className="text-slate-900 dark:text-white text-xl font-semibold">{edu.institution}</h2>
+                  <p className="text-slate-500 dark:text-slate-400">
                     {edu.degree} &mdash; {edu.field}
                   </p>
                 </div>

@@ -4,7 +4,7 @@ import projects from "../data/projects";
 function Projects({ refer }) {
   return (
     <div
-      className="min-h-screen snap-start flex flex-col justify-center bg-black"
+      className="min-h-screen snap-start flex flex-col justify-center bg-white dark:bg-black"
       ref={refer}
     >
       <div className="flex justify-center">

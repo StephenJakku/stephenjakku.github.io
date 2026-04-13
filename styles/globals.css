@@ -9,8 +9,6 @@ body {
   padding: 0;
   margin: 0;
   height: 100vh;
-  background-color: #000;
-  color: #fff;
 }
 
 div#__next {
@@ -19,7 +17,7 @@ div#__next {
 
 @layer components {
   .section-title {
-    @apply text-3xl font-light text-white tracking-wide pt-16 pb-2 relative;
+    @apply text-3xl font-light tracking-wide pt-16 pb-2 relative text-slate-900 dark:text-white;
   }
   .section-title::after {
     content: '';

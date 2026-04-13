@@ -1,8 +1,9 @@
 import { Sling as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import personal from "../data/personal";
+import ThemeToggle from "./ThemeToggle";
 
-function Navbar({ executeScroll, refs, scrolled }) {
+function Navbar({ executeScroll, refs }) {
   const [isOpen, setOpen] = useState(false);
 
   const navItems = [
@@ -16,7 +17,7 @@ function Navbar({ executeScroll, refs, scrolled }) {
   return (
     <div>
       <div className="grid grid-cols-2 h-14 px-1">
-        <div className="flex text-white justify-start items-center">
+        <div className="flex justify-start items-center">
           <h1
             className="pl-4 cursor-pointer text-xl font-semibold tracking-widest text-accent hover:opacity-80 transition-opacity"
             onClick={() => {
@@ -27,12 +28,13 @@ function Navbar({ executeScroll, refs, scrolled }) {
             SJ
           </h1>
         </div>
-        <div className="flex justify-end pr-2 items-center md:hidden">
-          <Hamburger color="white" toggled={isOpen} toggle={setOpen} size={20} />
+        <div className="flex justify-end pr-2 items-center md:hidden gap-2">
+          <ThemeToggle />
+          <Hamburger color="currentColor" toggled={isOpen} toggle={setOpen} size={20} />
         </div>
 
-        <div className="hidden md:flex justify-end items-center">
-          <ul className="flex items-center text-white text-sm font-medium space-x-1 mr-4">
+        <div className="hidden md:flex justify-end items-center gap-3 mr-4">
+          <ul className="flex items-center text-slate-900 dark:text-white text-sm font-medium space-x-1">
             {navItems.map((item) => (
               <li
                 key={item.label}
@@ -49,12 +51,13 @@ function Navbar({ executeScroll, refs, scrolled }) {
               Resume
             </li>
           </ul>
+          <ThemeToggle />
         </div>
       </div>
 
       {isOpen && (
-        <div className="bg-zinc-950/95 py-3">
-          <ul className="flex flex-col items-center text-white text-sm font-medium space-y-3">
+        <div className="bg-slate-100/95 dark:bg-zinc-950/95 py-3">
+          <ul className="flex flex-col items-center text-slate-900 dark:text-white text-sm font-medium space-y-3">
             {navItems.map((item) => (
               <li
                 key={item.label}

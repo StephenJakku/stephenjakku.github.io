@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen overflow-hidden bg-black">
+    <div className="h-screen overflow-hidden bg-slate-50 dark:bg-black">
       <Head>
         <title>Stephen Jakku</title>
         <meta name="description" content="Portfolio website of Stephen Jakku" />

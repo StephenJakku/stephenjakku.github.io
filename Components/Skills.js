@@ -13,14 +13,14 @@ function SkillChip({ skill }) {
           ? { boxShadow: "0 0 12px 2px rgba(56, 189, 248, 0.4)", borderColor: "#38bdf8" }
           : {}
       }
-      className="flex items-center gap-3 bg-white border border-white/10 rounded-full px-5 py-2.5 transition-all duration-200 cursor-default"
+      className="flex items-center gap-3 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-full px-5 py-2.5 transition-all duration-200 cursor-default"
     >
       <img
         src={skill.logo}
         alt={skill.name}
         className="h-5 w-5 object-contain flex-shrink-0"
       />
-      <span className="text-sm font-medium text-gray-700">
+      <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
         {skill.name}
       </span>
     </div>
@@ -34,7 +34,7 @@ function Skills({ refer }) {
 
   return (
     <div
-      className="min-h-screen snap-start flex flex-col justify-center bg-black"
+      className="min-h-screen snap-start flex flex-col justify-center bg-slate-100 dark:bg-black"
       ref={refer}
     >
       <div className="flex flex-col items-center w-full max-w-3xl mx-auto px-6">
